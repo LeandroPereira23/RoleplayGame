@@ -5,6 +5,14 @@
     protected float damage;
     protected float defense;
 
+    public Character(float hp, float maxHp, float damage, float defense)
+    {
+        this.hp = hp;
+        this.maxHp = maxHp;
+        this.defense = defense;
+        this.damage = damage;
+    }
+
     public float Attack(Character character)
     {
         character.hp -= damage * (1 - character.defense / 100);
