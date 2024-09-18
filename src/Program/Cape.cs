@@ -1,4 +1,4 @@
 ﻿public class Cape : Defense
 {
-    public Cape() { }
+    public Cape(float protection):base(protection){ }
 }
