@@ -1,4 +1,4 @@
-public class Broom
+public class Broom : Defense 
 {
     
 }

@@ -2,7 +2,13 @@ public class Witch : Character
 {
     private MagicStaff magicStaff;
     private Broom broom;
+
+
+    public Witch(float maxHp, float damage, float defense ) : base(maxHp, damage, defense)
+    {
     
+    }
+
     public void AddMagicStaff(MagicStaff magicStaff)
     {
         this.magicStaff = magicStaff;
@@ -22,4 +28,5 @@ public class Witch : Character
     {
         broom = null;
     }
+    
 }
