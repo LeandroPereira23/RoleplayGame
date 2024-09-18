@@ -30,4 +30,12 @@
 
         hp = maxHp;
     }
+
+    public Character(float maxHp, float damage, float defense)
+    {
+        this.maxHp = maxHp;
+        this.hp = maxHp;
+        this.damage = damage;
+        this.defense = defense;
+    }
 }
