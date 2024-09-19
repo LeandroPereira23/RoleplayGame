@@ -1,5 +1,3 @@
-namespace Program;
-
 public class Knife : Attack
 {
     public float Damage

@@ -1,5 +1,3 @@
-namespace Program;
-
 public class Dwarve : Character
 {
     private Knife knife;
