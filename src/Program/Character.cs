@@ -5,7 +5,7 @@ public class Character
     protected float maxHp;
     protected float damage;
     protected float defense;
-
+    
     public Character(float hp, float maxHp, float damage, float defense)
     {
         this.hp = hp;
@@ -31,12 +31,14 @@ public class Character
 
         hp = maxHp;
     }
-
-    public Character(float maxHp, float damage, float defense)
+    
+    public float AttackValue
     {
-        this.maxHp = maxHp;
-        this.hp = maxHp;
-        this.damage = damage;
-        this.defense = defense;
+        get { return damage; }
+    }
+
+    public float DefenseValue
+    {
+        get { return defense; }
     }
 }

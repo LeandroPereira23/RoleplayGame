@@ -5,7 +5,7 @@ public class Witch : Character
     private Broom broom;
 
 
-    public Witch(float maxHp, float damage, float defense ) : base(maxHp, damage, defense)
+    public Witch(float hp, float maxHp, float damage, float defense ) : base(hp, maxHp, damage, defense)
     {
     
     }
