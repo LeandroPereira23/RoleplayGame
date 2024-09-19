@@ -9,9 +9,9 @@ public class MagicStaff: Attack
 
     private AttackSpell _attackSpell;
     
-    public float DamageBoost
+    public float Damage
     {
-        get { return _attackSpell.DamageBoost ; }
+        get { return  damage*(1 + _attackSpell.DamageBoost) ; }
     }
 
 }

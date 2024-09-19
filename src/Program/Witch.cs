@@ -13,12 +13,12 @@ public class Witch : Character  //Asignacion de herencia hijo : padre
     public void AddMagicStaff(MagicStaff magicStaff)  //Metodos
     {
         this.magicStaff = magicStaff;
-        damage *=( magicStaff.DamageBoost +1);
+        damage += magicStaff.Damage;
     }
-
+    
     public void RemoveMagicStaff ()  //Metodo 
     {
-        damage /= (magicStaff.DamageBoost + 1);
+        damage -= magicStaff.Damage;
         magicStaff = null;
     }
 
