@@ -1,4 +1,5 @@
-﻿public class Item
+﻿namespace Program;
+public class Item
 {
     
 }

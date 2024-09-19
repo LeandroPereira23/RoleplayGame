@@ -1,4 +1,5 @@
-﻿public class Spell
+﻿namespace Program;
+public class Spell
 {
     protected string name;
 

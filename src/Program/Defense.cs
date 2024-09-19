@@ -1,4 +1,5 @@
-﻿public class Defense
+﻿namespace Program;
+public class Defense
 {
     protected float protection;
 

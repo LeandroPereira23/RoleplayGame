@@ -1,3 +1,5 @@
+namespace Program;
+
 public class MagicStaff: Attack
 {
     public MagicStaff(float damage, AttackSpell attackSpell) : base(damage)

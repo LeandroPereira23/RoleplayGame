@@ -1,4 +1,5 @@
-﻿public class AttackSpell : Spell
+﻿namespace Program;
+public class AttackSpell : Spell
 {
     private float damageBoost;
 

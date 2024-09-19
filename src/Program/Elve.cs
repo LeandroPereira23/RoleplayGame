@@ -1,5 +1,4 @@
 namespace Program;
-
 public class Elve : Character
 {
     private Spear spear;

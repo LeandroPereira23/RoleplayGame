@@ -1,4 +1,5 @@
-﻿public class Cape : Defense
+﻿namespace Program;
+public class Cape : Defense
 {
     public Cape(float protection):base(protection){ }
 }

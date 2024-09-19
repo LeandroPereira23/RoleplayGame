@@ -1,4 +1,5 @@
-﻿public class Attack
+﻿namespace Program;
+public class Attack
 {
     protected float damage;
 

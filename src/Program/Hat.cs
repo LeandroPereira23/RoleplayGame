@@ -1,3 +1,4 @@
+namespace Program;
 public class Hat : Defense
 {
     

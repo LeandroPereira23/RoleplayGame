@@ -1,4 +1,5 @@
-﻿public class Character
+﻿namespace Program;
+public class Character
 {
     protected float hp;
     protected float maxHp;

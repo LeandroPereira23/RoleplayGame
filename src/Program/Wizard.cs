@@ -1,4 +1,5 @@
-﻿public class Wizard
+﻿namespace Program;
+public class Wizard
 {
     private MagicBook magicBook;
     private Cape cape;
