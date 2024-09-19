@@ -7,7 +7,12 @@ public class MagicBook
     public MagicBook()
     {
         spells = new List<Spell>();
-        knowledge = 0;
+        knowledge = 1;
+    }
+
+    public float Knowledge
+    {
+        get { return knowledge;  }
     }
 
     public void AddSpell(Spell spell)
@@ -18,7 +23,7 @@ public class MagicBook
             knowledge += 0.1f;
         }
     }
-    
+
     public void RemoveSpell(Spell spell)
     {
         if (spells.Contains(spell))
