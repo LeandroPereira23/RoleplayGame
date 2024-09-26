@@ -16,7 +16,7 @@ public class Character<TItem>
         this.damage = damage;
     }
 
-    private int searchItemInItems(IItem item)
+    private int searchItemInItems(TItem item)
     {
         for (int i = 0; i < items.Length; i++)
         {
@@ -29,7 +29,7 @@ public class Character<TItem>
         return -1;
     }
 
-    public void AddItem(IItem item)
+    public void AddItem(TItem item)
     {
         int itemIndex = searchItemInItems(item);
         if (itemIndex == -1)
