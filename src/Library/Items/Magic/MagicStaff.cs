@@ -1,17 +1,18 @@
 namespace Program;
 
-public class MagicStaff: Attack
+public class MagicStaff: MagicItem, IAttack
 {
-    public MagicStaff(float damage, AttackSpell attackSpell) : base(damage)
-    {
-        _attackSpell = attackSpell;
-    }
-
-    private AttackSpell _attackSpell;
-    
+    private float damage;
+    private AttackSpell attackSpell;
     public float Damage
     {
-        get { return  damage*(1 + _attackSpell.DamageBoost) ; }
+        get { return  damage * (1 + attackSpell.DamageBoost) ; }
+        private set { damage = value; }
     }
-
+    
+    public MagicStaff(float damage, AttackSpell attackSpell)
+    {
+        Damage = damage;
+        this.attackSpell = attackSpell;
+    }
 }

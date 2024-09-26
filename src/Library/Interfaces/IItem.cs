@@ -1,5 +1,6 @@
 ﻿namespace Program;
-public class Item
+
+public interface IItem
 {
     
 }

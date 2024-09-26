@@ -1,10 +1,10 @@
 namespace Program;
-public class Knife : Attack
+public class Knife : PhysicItem, IAttack
 {
-    public float Damage
-    {
-        get { return this.damage; }
-    }
+    public float Damage { get; }
 
-    public Knife(float damage):base(damage){ }
+    public Knife(float damage)
+    {
+        Damage = damage;
+    }
 }

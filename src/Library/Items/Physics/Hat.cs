@@ -1,12 +1,10 @@
 namespace Program;
-public class Hat : Defense
+public class Hat : PhysicItem, IDefense
 {
-    
-    public float Protection
-    {
-        get { return protection; }
-    }
+    public float Protection { get; }
 
-    public Hat(float protection):base(protection) { }
-    
+    public Hat(float protection)
+    {
+        Protection = protection;
+    }
 }

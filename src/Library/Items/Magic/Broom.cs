@@ -1,13 +1,12 @@
 namespace Program;
-public class Broom : Defense
+public class Broom : MagicItem, IDefense, IAttack
 {
-    public Broom(float protection) : base(protection)
-    {
-        
-    }
+    public float Protection { get; }
+    public float Damage { get; }
 
-    public float Protection
+    public Broom(float protection, float attack)
     {
-        get { return protection; }
+        Protection = protection;
+        Damage = attack;
     }
 }

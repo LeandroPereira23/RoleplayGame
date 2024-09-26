@@ -1,5 +1,10 @@
 namespace Program;
-public class Armor : Defense
+public class Armor : PhysicItem, IDefense
 {
-    public Armor(float protection) : base(protection){}
+    public float Protection { get; }
+
+    public Armor(float protection)
+    {
+        Protection = protection;
+    }
 }

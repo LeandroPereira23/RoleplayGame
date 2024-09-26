@@ -1,5 +1,10 @@
 namespace Program;
-public class Spear : Attack
+public class Spear : PhysicItem, IAttack
 {
-    public Spear(float damage):base(damage){}
+    public float Damage { get; }
+
+    public Spear(float damage)
+    {
+        Damage = damage;
+    }
 }

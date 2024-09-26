@@ -1,5 +1,10 @@
 ﻿namespace Program;
-public class Cape : Defense
+public class Cape : MagicItem, IDefense
 {
-    public Cape(float protection):base(protection){ }
+    public float Protection { get; }
+
+    public Cape(float protection)
+    {
+        Protection = protection;
+    }
 }

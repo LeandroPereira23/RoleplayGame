@@ -1,6 +1,7 @@
 ﻿namespace Program;
-public class Character
+public class Character<TItem>
 {
+    protected TItem[] items;
     protected float hp;
     protected float maxHp;
     protected float damage;
@@ -8,13 +9,42 @@ public class Character
     
     public Character(float hp, float maxHp, float damage, float defense)
     {
+        items = new TItem[2];
         this.hp = hp;
         this.maxHp = maxHp;
         this.defense = defense;
         this.damage = damage;
     }
 
-    public float Attack(Character character)
+    private int searchItemInItems(IItem item)
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i] != null && items[i].Equals(item))
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    public void AddItem(IItem item)
+    {
+        int itemIndex = searchItemInItems(item);
+        if (itemIndex == -1)
+        {
+            // -----------------> FALTA IMPLEMENTAR
+        }
+        
+    }
+    
+    public void RemoveItem(TItem item)
+    {
+        // -----------------> FALTA IMPLEMENTAR
+    }
+
+    public float Attack(Character<IItem> character)
     {
         character.hp -= damage * (1 - character.defense / 100);
         return character.hp;
