@@ -35,13 +35,14 @@ public class Character<TItem>
         if (itemIndex == -1)
         {
             // -----------------> FALTA IMPLEMENTAR
+           
         }
         
     }
     
     public void RemoveItem(TItem item)
     {
-        // -----------------> FALTA IMPLEMENTAR
+        items[searchItemInItems(item)] = default(TItem);
     }
 
     public float Attack(Character<IItem> character)
