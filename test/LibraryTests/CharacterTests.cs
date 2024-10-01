@@ -1,6 +1,6 @@
-namespace TestProject1;
+namespace LibraryTests;
 
-public class Tests
+public class CharacterTests
 {
     [SetUp]
     public void Setup()
