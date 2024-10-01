@@ -34,10 +34,27 @@ public class Character<TItem>
         int itemIndex = searchItemInItems(item);
         if (itemIndex == -1)
         {
-            // -----------------> FALTA IMPLEMENTAR
-           
+            Type[] InventoryTipes1 = items[0].GetType().GetInterfaces();
+            Type[] InventoryTipes2 = items[1].GetType().GetInterfaces();
+            Type[] itemType = item.GetType().GetInterfaces();
+
+            if (itemType == InventoryTipes1)
+            {
+                items[0] = item;
+            }
+            else
+            {
+                if (itemType == InventoryTipes2)
+                {
+                    items[1] = item;
+                }
+                else
+                {
+                    items[0] = item; //FALTA CAMBIAR
+                }
+            }
         }
-        
+
     }
     
     public void RemoveItem(TItem item)
