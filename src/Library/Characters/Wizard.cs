@@ -1,8 +1,8 @@
 ﻿namespace Program;
 public class Wizard : Character<MagicItem>
 {
-    public Wizard(float hp, float maxHp, float damage, float defense)
-        : base(hp, maxHp, damage, defense)
+    public Wizard(float maxHp, float damage, float defense)
+        : base(maxHp, damage, defense)
     {
         
     }
