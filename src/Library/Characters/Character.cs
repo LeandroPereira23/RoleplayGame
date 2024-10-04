@@ -1,4 +1,5 @@
 ﻿namespace Program;
+
 public abstract class Character<TItem>
 {
     protected TItem[] items;
@@ -6,10 +7,11 @@ public abstract class Character<TItem>
     protected float maxHp;
     protected float damage;
     protected float defense;
-    
+    private int inventoryLength = 2;
+
     public Character(float maxHp, float damage, float defense)
     {
-        items = new TItem[2];
+        items = new TItem[inventoryLength];
         hp = maxHp;
         this.maxHp = maxHp;
         this.defense = defense;
@@ -20,63 +22,55 @@ public abstract class Character<TItem>
     {
         get { return hp; }
     }
-    
-    private int searchItemInItems(TItem item)
+
+    private int SearchItemInItems(TItem item)
     {
         return Array.IndexOf(items, item);
     }
 
     public void AddItem(TItem item)
     {
-        int itemIndex = searchItemInItems(item);
-        if (itemIndex != -1)
-        {
-            items[itemIndex] = item;
-            return;
-        }
-        
-        Type[] itemType = item.GetType().GetInterfaces();
-        Console.WriteLine("ITEM");
-        foreach (var type in itemType)
-        {
-            Console.WriteLine(type);
-        }
-        Console.WriteLine(itemType);
-        if (items[0] != null)
-        {
-            Type[] inventoryTipes1 = items[0].GetType().GetInterfaces();
-            Console.WriteLine("INVENTORY 1");
-            foreach (var type in inventoryTipes1)
-            {
-                Console.WriteLine(type);
-            }
+        if (ItemAlreadyExists(item)) return;
 
-            if (itemType == inventoryTipes1)
-            {
-                items[0] = item;
-            }
-        }
-        else if (items[1] != null)
+        int indexSlotAvailable = GetIndexSlotAvailable();
+        if (indexSlotAvailable != -1)
         {
-            Type[] inventoryTipes2 = items[1].GetType().GetInterfaces();
-            if (itemType == inventoryTipes2)
-            {
-                items[1] = item;
-            }
-            else
-            {
-                items[0] = item; //FALTA CAMBIAR
-            }
+            AssignItemToSlot(indexSlotAvailable, item);
         }
         else
         {
-            items[0] = item;
+            // Reemplazar el peor item
         }
+    }
+
+    private bool ItemAlreadyExists(TItem item)
+    {
+        return Array.IndexOf(items, item) != -1;
+    }
+
+    private int GetIndexSlotAvailable()
+    {
+        for (int i = 0; i < inventoryLength; i++)
+        {
+            if (IsSlotAvailable(i)) return i;
+        }
+        
+        return -1;
+    }
+
+    private bool IsSlotAvailable(int index)
+    {
+        return items[index] == null;
+    }
+    
+    private void AssignItemToSlot(int index, TItem item)
+    {
+        items[index] = item;
     }
     
     public void RemoveItem(TItem item)
     {
-        items[searchItemInItems(item)] = default(TItem);
+        items[SearchItemInItems(item)] = default(TItem);
     }
 
     public float Attack(Character<TItem> character)
