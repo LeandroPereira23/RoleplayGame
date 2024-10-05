@@ -75,7 +75,15 @@ public abstract class Character<TItem>
 
     public float Attack(Character<TItem> character)
     {
-        character.hp -= damage * (1 - character.defense / 100);
+        float dmg = AttackValue * (1 - character.DefenseValue / 100);
+        if (character.hp > dmg)
+        {
+            character.hp -= dmg;
+        }
+        else
+        {
+            character.hp = 0;
+        }
         return character.hp;
     }
     
@@ -93,11 +101,35 @@ public abstract class Character<TItem>
     
     public float AttackValue
     {
-        get { return damage; }
+        get 
+        { 
+            IAttack item = items[0] as IAttack;
+            if (item != null)
+            {
+                return item.Damage + damage;
+            }
+
+            return damage;
+        }
     }
 
     public float DefenseValue
     {
-        get { return defense; }
+        get
+        {
+            float defensa = defense;
+            IDefense item = items[0] as IDefense;
+            if (item != null)
+            {
+                defensa += item.Protection ;
+            }
+            IDefense item2 = items[1] as IDefense;
+            if (item2 != null)
+            {
+                defensa += item2.Protection ;
+            }
+
+            return defensa;
+        }
     }
 }
