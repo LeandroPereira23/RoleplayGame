@@ -1,6 +1,6 @@
 ﻿namespace Program;
 
-public class MagicBook: IMagicItem
+public class MagicBook: IMagicItem, IHasSpell
 {
     private List<Spell> spells = new();
     private float knowledge = 1;

@@ -1,18 +1,42 @@
 namespace Program;
 
-public class MagicStaff: IMagicItem, IAttack
+public class MagicStaff : IMagicItem, IHasSpell
 {
+    private Spell spell;
+    
     private float damage;
-    private AttackSpell attackSpell;
     public float Damage
     {
-        get { return  damage * (1 + attackSpell.DamageBoost) ; }
+        get
+        {
+            AttackSpell attackSpell = spell as AttackSpell;
+
+            return attackSpell != null 
+                ?  damage * (1 + attackSpell.DamageBoost) 
+                : 1;
+        }
         private set { damage = value; }
     }
     
-    public MagicStaff(float damage, AttackSpell attackSpell)
+    private float protection;
+    public float Protection
     {
-        Damage = damage;
-        this.attackSpell = attackSpell;
+
+        get
+        {
+            DefenseSpell defenseSpell = spell as DefenseSpell;
+
+            return defenseSpell != null 
+                ?  protection * (1 + defenseSpell.ProtectionBoost) 
+                : 1;
+        }
+        private set { protection = value; }
+    }
+
+    public MagicStaff(float damage, float protection, Spell spell)
+    {
+        this.damage = damage;
+        this.protection = protection;
+        this.spell = spell;
     }
 }

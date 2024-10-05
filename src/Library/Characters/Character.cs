@@ -51,7 +51,7 @@ public abstract class Character<TItem>
     {
         get
         {
-            MagicBook magicBook = null;
+            IHasSpell auxHasSpell = null;
             float magicBookDamage = 0;
             float attackValue = damage;
             
@@ -63,17 +63,17 @@ public abstract class Character<TItem>
                     attackValue += item.Damage;
                 }
                 
-                MagicBook book = inventory.Items[i] as MagicBook;
-                if (book != null && book.Damage > magicBookDamage)
+                IHasSpell hasSpell = inventory.Items[i] as IHasSpell;
+                if (hasSpell != null && hasSpell.Damage > magicBookDamage)
                 {
-                    magicBookDamage = book.Damage;
-                    magicBook = book;
+                    magicBookDamage = hasSpell.Damage;
+                    auxHasSpell = hasSpell;
                 }
             }
             
-            if (magicBook != null)
+            if (auxHasSpell != null)
             {
-                attackValue *= magicBook.Damage;
+                attackValue *= auxHasSpell.Damage;
             }
 
             return attackValue;
@@ -84,7 +84,7 @@ public abstract class Character<TItem>
     {
         get
         {
-            MagicBook magicBook = null;
+            IHasSpell auxHasSpell = null;
             float magicBookProtection = 0;
             float defenseValue = defense;
             
@@ -96,15 +96,15 @@ public abstract class Character<TItem>
                     defenseValue += item.Protection;
                 }
 
-                MagicBook book = inventory.Items[i] as MagicBook;
-                if (book != null && book.Protection > magicBookProtection)
+                IHasSpell hasSpell = inventory.Items[i] as IHasSpell;
+                if (hasSpell != null && hasSpell.Protection > magicBookProtection)
                 {
-                    magicBookProtection = book.Protection;
-                    magicBook = book;
+                    magicBookProtection = hasSpell.Protection;
+                    auxHasSpell = hasSpell;
                 }
             }
             
-            if (magicBook != null)
+            if (auxHasSpell != null)
             {
                 defenseValue *= magicBookProtection;
             }
