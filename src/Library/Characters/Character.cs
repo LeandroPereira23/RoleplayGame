@@ -112,16 +112,17 @@ public abstract class Character<TItem>
                     attackValue += item.Damage;
                 }
                 
-                magicBook = items[i] as MagicBook;
-                if (magicBook != null && magicBook.Damage > magicBookDamage)
+                MagicBook book = items[i] as MagicBook;
+                if (book != null && book.Damage > magicBookDamage)
                 {
-                    magicBookDamage = magicBook.Damage;
+                    magicBookDamage = book.Damage;
+                    magicBook = book;
                 }
             }
             
             if (magicBook != null)
             {
-                attackValue *= magicBookDamage;
+                attackValue *= magicBook.Damage;
             }
 
             return attackValue;
@@ -144,10 +145,11 @@ public abstract class Character<TItem>
                     defenseValue += item.Protection;
                 }
                 
-                magicBook = items[i] as MagicBook;
-                if (magicBook != null && magicBook.Damage > magicBookProtection)
+                MagicBook book = items[i] as MagicBook;
+                if (book != null && book.Protection > magicBookProtection)
                 {
-                    magicBookProtection = magicBook.Damage;
+                    magicBookProtection = book.Protection;
+                    magicBook = book;
                 }
             }
             
