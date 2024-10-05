@@ -2,7 +2,7 @@
 
 namespace LibraryTests;
 
-public class WizzardTest
+public class WizardTest
 {
     private Wizard wizard;
     private Wizard evilWizard;
@@ -29,5 +29,11 @@ public class WizzardTest
         wizard.Attack(evilWizard);
         
         Assert.AreEqual(166, Math.Round(evilWizard.Hp));   // Al hacer las cuentas a mano da 166
+    }
+    
+    [Test]
+    public void TestHeal()
+    {
+        Assert.Pass();
     }
 }

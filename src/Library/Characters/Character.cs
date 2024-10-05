@@ -90,6 +90,11 @@ public abstract class Character<TItem>
         }
     }
     
+    private bool IsDead()
+    {
+        return hp <= 0;
+    }
+    
     public float Attack(Character<TItem> character)
     {
         float dmg = AttackValue * (1 - character.DefenseValue / 100);
@@ -101,11 +106,6 @@ public abstract class Character<TItem>
         return character.hp;
     }
     
-    private bool IsDead()
-    {
-        return hp <= 0;
-    }
-
     public void Heal()
     {
         if (IsDead()) return;

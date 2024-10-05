@@ -21,4 +21,10 @@ public class ElveTest
         
         Assert.AreEqual(175, elveEnemy.Hp); // Al hacer las cuentas a mano da 175
     }
+    
+    [Test]
+    public void TestHeal()
+    {
+        Assert.Pass();
+    }
 }

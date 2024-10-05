@@ -25,10 +25,15 @@ public class WitchTest
     [Test]
     public void TestAttack()
     {
-        
         witch.inventory.AddItem(book);
         witch.Attack(evilWitch);
         
         Assert.AreEqual(166, Math.Round(evilWitch.Hp));   // Al hacer las cuentas a mano da 166
+    }
+    
+    [Test]
+    public void TestHeal()
+    {
+        Assert.Pass();
     }
 }

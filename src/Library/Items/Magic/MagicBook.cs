@@ -17,7 +17,7 @@ public class MagicBook: IMagicItem, IHasSpell
         get { return protection + knowledge; } 
     }
 
-    public void AddSpell(Spell spell)
+    private void AddSpell(Spell spell)
     {
         if (!spells.Contains(spell))
         {

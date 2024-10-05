@@ -2,7 +2,7 @@ using Program;
 
 namespace LibraryTests;
 
-public class CharacterTests
+public class CharacterTest
 {
     [SetUp]
     public void Setup()
