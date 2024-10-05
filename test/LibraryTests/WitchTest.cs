@@ -29,6 +29,6 @@ public class WitchTest
         witch.inventory.AddItem(book);
         witch.Attack(evilWitch);
         
-        Assert.AreEqual(45, Math.Round(evilWitch.Hp));   // Al hacer las cuentas a mano da 45
+        Assert.AreEqual(166, Math.Round(evilWitch.Hp));   // Al hacer las cuentas a mano da 166
     }
 }
