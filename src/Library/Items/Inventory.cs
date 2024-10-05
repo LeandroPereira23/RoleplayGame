@@ -2,7 +2,7 @@ namespace Library.Items;
 
 public class Inventory<TItem>
 {
-    protected TItem[] items;
+    private TItem[] items;
     public TItem[] Items
     {
         get { return items; }
@@ -20,35 +20,9 @@ public class Inventory<TItem>
         items = new TItem[inventoryLength];
     }
     
-    private int SearchItemInItems(TItem item)
+    private int GetIndexOfItem(TItem item)
     {
         return Array.IndexOf(items, item);
-    }
-
-    public void AddItem(TItem item)
-    {
-        if (ItemAlreadyExists(item)) return;
-
-        int indexSlotAvailable = GetIndexSlotAvailable();
-        if (indexSlotAvailable != -1)
-        {
-            AssignItemToSlot(indexSlotAvailable, item);
-        }
-        else
-        {
-            items[0] = item;
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (i == inventoryLength - 1)
-                {
-                    items[0] = items[i];
-                }
-                else
-                {
-                    items[i + 1] = items[i];
-                }
-            }
-        }
     }
 
     private bool ItemAlreadyExists(TItem item)
@@ -76,9 +50,35 @@ public class Inventory<TItem>
         items[index] = item;
     }
     
+    public void AddItem(TItem item)
+    {
+        if (ItemAlreadyExists(item)) return;
+
+        int indexSlotAvailable = GetIndexSlotAvailable();
+        if (indexSlotAvailable != -1)
+        {
+            AssignItemToSlot(indexSlotAvailable, item);
+        }
+        else
+        {
+            items[0] = item;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (i == inventoryLength - 1)
+                {
+                    items[0] = items[i];
+                }
+                else
+                {
+                    items[i + 1] = items[i];
+                }
+            }
+        }
+    }
+    
     public void RemoveItem(TItem item)
     {
-        items[SearchItemInItems(item)] = default(TItem);
+        items[GetIndexOfItem(item)] = default(TItem);
     }
 
     public string[] GetItemNames()

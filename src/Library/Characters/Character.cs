@@ -23,29 +23,6 @@ public abstract class Character<TItem>
     {
         get { return hp; }
     }
-
-    public float Attack(Character<TItem> character)
-    {
-        float dmg = AttackValue * (1 - character.DefenseValue / 100);
-
-        character.hp = character.hp > dmg 
-            ? character.hp - dmg 
-            : 0;
-        
-        return character.hp;
-    }
-    
-    public bool isDead()
-    {
-        return hp <= 0;
-    }
-
-    public void Heal()
-    {
-        if (isDead()) return;
-
-        hp = maxHp;
-    }
     
     public float AttackValue
     {
@@ -111,5 +88,28 @@ public abstract class Character<TItem>
 
             return defenseValue;
         }
+    }
+    
+    public float Attack(Character<TItem> character)
+    {
+        float dmg = AttackValue * (1 - character.DefenseValue / 100);
+
+        character.hp = character.hp > dmg 
+            ? character.hp - dmg 
+            : 0;
+        
+        return character.hp;
+    }
+    
+    private bool IsDead()
+    {
+        return hp <= 0;
+    }
+
+    public void Heal()
+    {
+        if (IsDead()) return;
+
+        hp = maxHp;
     }
 }
