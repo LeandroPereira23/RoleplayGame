@@ -5,7 +5,7 @@ public class Inventory<TItem>
     protected TItem[] items;
     public TItem[] Items
     {
-        get { return Items; }
+        get { return items; }
     }
     
     private int inventoryLength;
@@ -16,6 +16,7 @@ public class Inventory<TItem>
     
     public Inventory(int inventoryLength)
     {
+        this.inventoryLength = inventoryLength;
         items = new TItem[inventoryLength];
     }
     
