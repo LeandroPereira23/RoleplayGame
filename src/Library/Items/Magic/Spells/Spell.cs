@@ -1,5 +1,5 @@
 ﻿namespace Program;
-public class Spell
+public abstract class Spell
 {
     protected string name;
 

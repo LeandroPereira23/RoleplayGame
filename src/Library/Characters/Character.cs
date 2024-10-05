@@ -76,14 +76,11 @@ public abstract class Character<TItem>
     public float Attack(Character<TItem> character)
     {
         float dmg = AttackValue * (1 - character.DefenseValue / 100);
-        if (character.hp > dmg)
-        {
-            character.hp -= dmg;
-        }
-        else
-        {
-            character.hp = 0;
-        }
+
+        character.hp = character.hp > dmg 
+            ? character.hp - dmg 
+            : 0;
+        
         return character.hp;
     }
     
@@ -101,15 +98,33 @@ public abstract class Character<TItem>
     
     public float AttackValue
     {
-        get 
-        { 
-            IAttack item = items[0] as IAttack;
-            if (item != null)
+        get
+        {
+            MagicBook magicBook = null;
+            float magicBookDamage = 0;
+            float attackValue = damage;
+            
+            for (int i = 0; i < inventoryLength; i++)
             {
-                return item.Damage + damage;
+                IAttack item = items[i] as IAttack;
+                if (item != null)
+                {
+                    attackValue += item.Damage;
+                }
+                
+                magicBook = items[i] as MagicBook;
+                if (magicBook != null && magicBook.Damage > magicBookDamage)
+                {
+                    magicBookDamage = magicBook.Damage;
+                }
+            }
+            
+            if (magicBook != null)
+            {
+                attackValue *= magicBookDamage;
             }
 
-            return damage;
+            return attackValue;
         }
     }
 
@@ -117,19 +132,31 @@ public abstract class Character<TItem>
     {
         get
         {
-            float defensa = defense;
-            IDefense item = items[0] as IDefense;
-            if (item != null)
+            MagicBook magicBook = null;
+            float magicBookProtection = 0;
+            float defenseValue = defense;
+            
+            for (int i = 0; i < inventoryLength; i++)
             {
-                defensa += item.Protection ;
+                IDefense item = items[i] as IDefense;
+                if (item != null)
+                {
+                    defenseValue += item.Protection;
+                }
+                
+                magicBook = items[i] as MagicBook;
+                if (magicBook != null && magicBook.Damage > magicBookProtection)
+                {
+                    magicBookProtection = magicBook.Damage;
+                }
             }
-            IDefense item2 = items[1] as IDefense;
-            if (item2 != null)
+            
+            if (magicBook != null)
             {
-                defensa += item2.Protection ;
+                defenseValue *= magicBookProtection;
             }
 
-            return defensa;
+            return defenseValue;
         }
     }
 }

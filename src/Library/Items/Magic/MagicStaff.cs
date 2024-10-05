@@ -1,6 +1,6 @@
 namespace Program;
 
-public class MagicStaff: MagicItem, IAttack
+public class MagicStaff: IMagicItem, IAttack
 {
     private float damage;
     private AttackSpell attackSpell;

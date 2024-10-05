@@ -1,5 +1,5 @@
 namespace Program;
-public class Broom : MagicItem, IDefense, IAttack
+public class Broom : IMagicItem, IDefense, IAttack
 {
     public float Protection { get; }
     public float Damage { get; }

@@ -11,10 +11,15 @@ public class Program
         Spear cuchillo2 = new Spear(18);
         elve.AddItem(cuchillo1);
         elve.AddItem(cuchillo2);
-        Console.WriteLine(elve.Hp);
+        
+        Console.WriteLine(elveEnemy.Hp);
         elve.Attack(elveEnemy);
-        Console.WriteLine(elve.Hp);
-        elve.Heal();
-        Console.WriteLine(elve.Hp);
+        Console.WriteLine(elveEnemy.Hp);
+        elve.Attack(elveEnemy);
+        Console.WriteLine(elveEnemy.Hp);
+        elve.Attack(elveEnemy);
+        Console.WriteLine(elveEnemy.Hp);
+        elveEnemy.Heal();
+        Console.WriteLine(elveEnemy.Hp);
     }
 } 

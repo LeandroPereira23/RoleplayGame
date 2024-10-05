@@ -1,18 +1,20 @@
 ﻿namespace Program;
 
-public class MagicBook: MagicItem , IAttack , IDefense
+public class MagicBook: IMagicItem
 {
-    private List<Spell> spells = new List<Spell>();
+    private List<Spell> spells = new();
     private float knowledge = 1;
-    private float damage { get; set; } = 0;
+    
+    private float damage { get; set; }
     public float Damage
     {
-        get { return damage * knowledge; } 
+        get { return damage + knowledge; } 
     }
-    public float Protection { get; } = 0;
     
-    public MagicBook()
+    private float protection { get; set; }
+    public float Protection
     {
+        get { return protection + knowledge; } 
     }
 
     public void AddSpell(Spell spell)
@@ -25,13 +27,17 @@ public class MagicBook: MagicItem , IAttack , IDefense
             AttackSpell atSpell = spell as AttackSpell;
             if (atSpell != null)
             {
-                if (atSpell.DamageBoost > damage)
-                {
-                    damage = atSpell.DamageBoost;
-                }
+                damage += atSpell.DamageBoost / 100;
+            }
+            
+            DefenseSpell dfSpell = spell as DefenseSpell;
+            if (dfSpell != null)
+            {
+                protection += dfSpell.ProtectionBoost / 100;
             }
         }
     }
+    
     public void AddSpell(params Spell[] spells)
     {
         foreach (var spell in spells)
@@ -39,6 +45,7 @@ public class MagicBook: MagicItem , IAttack , IDefense
             AddSpell(spell);
         }
     }
+    
     public void RemoveSpell(Spell spell)
     {
         if (spells.Contains(spell))
@@ -47,6 +54,4 @@ public class MagicBook: MagicItem , IAttack , IDefense
             knowledge -= 0.1f;
         }
     }
-    
-    
 }

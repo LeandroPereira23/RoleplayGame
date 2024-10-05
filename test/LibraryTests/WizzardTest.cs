@@ -25,7 +25,6 @@ public class WizzardTest
     [Test]
     public void TestAttack()
     {
-        
         wizard.AddItem(book);
         wizard.Attack(evilWizard);
         
