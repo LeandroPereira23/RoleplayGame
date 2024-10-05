@@ -1,6 +1,6 @@
 ﻿namespace Program;
 
-public class Shield: PhysicItem, IAttack, IDefense
+public class Shield: IPhysicItem, IAttack, IDefense
 {
     public float Damage { get; }
     public float Protection { get; }

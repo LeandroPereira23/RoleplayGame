@@ -7,10 +7,12 @@ public class Program
         Elve elve = new Elve(100, 10, 10);
         Elve elveEnemy = new Elve(200, 5, 5);
 
-        Knife cuchillo1 = new Knife(18);
-        Spear cuchillo2 = new Spear(18);
-        elve.inventory.AddItem(cuchillo1);
-        elve.inventory.AddItem(cuchillo2);
+        Knife cuchillo = new Knife(18);
+        Spear spear = new Spear(18);
+        elve.inventory.AddItem(cuchillo);
+        elve.inventory.AddItem(spear);
+
+        Console.WriteLine(string.Join(" ", elve.inventory.GetItemNames()));
         
         Console.WriteLine(elveEnemy.Hp);
         elve.Attack(elveEnemy);

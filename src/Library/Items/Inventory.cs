@@ -80,4 +80,14 @@ public class Inventory<TItem>
     {
         items[SearchItemInItems(item)] = default(TItem);
     }
+
+    public string[] GetItemNames()
+    {
+        string[] names = new string[inventoryLength];
+        for (int i = 0; i < items.Length; i++)
+        {
+            names[i] = items[i].GetType().Name;
+        }
+        return names;
+    }
 }

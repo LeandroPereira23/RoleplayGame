@@ -1,5 +1,5 @@
 namespace Program;
-public class Hat : PhysicItem, IDefense
+public class Hat : IPhysicItem, IDefense
 {
     public float Protection { get; }
 

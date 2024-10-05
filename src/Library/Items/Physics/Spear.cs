@@ -1,5 +1,5 @@
 namespace Program;
-public class Spear : PhysicItem, IAttack
+public class Spear : IPhysicItem, IAttack
 {
     public float Damage { get; }
 
