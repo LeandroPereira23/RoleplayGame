@@ -36,7 +36,18 @@ public class Inventory<TItem>
         }
         else
         {
-            // Reemplazar el peor item
+            items[0] = item;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (i == inventoryLength - 1)
+                {
+                    items[0] = items[i];
+                }
+                else
+                {
+                    items[i + 1] = items[i];
+                }
+            }
         }
     }
 
