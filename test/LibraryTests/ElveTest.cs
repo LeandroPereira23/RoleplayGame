@@ -16,7 +16,7 @@ public class ElveTest
     [Test]
     public void TestAttack()
     {
-        elve.AddItem(new Knife(40));
+        elve.inventory.AddItem(new Knife(40));
         elve.Attack(elveEnemy);
         
         Assert.AreEqual(175, elveEnemy.Hp); // Al hacer las cuentas a mano da 175

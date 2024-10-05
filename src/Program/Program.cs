@@ -9,8 +9,8 @@ public class Program
 
         Knife cuchillo1 = new Knife(18);
         Spear cuchillo2 = new Spear(18);
-        elve.AddItem(cuchillo1);
-        elve.AddItem(cuchillo2);
+        elve.inventory.AddItem(cuchillo1);
+        elve.inventory.AddItem(cuchillo2);
         
         Console.WriteLine(elveEnemy.Hp);
         elve.Attack(elveEnemy);

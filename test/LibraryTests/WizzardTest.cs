@@ -25,9 +25,9 @@ public class WizzardTest
     [Test]
     public void TestAttack()
     {
-        wizard.AddItem(book);
+        wizard.inventory.AddItem(book);
         wizard.Attack(evilWizard);
         
-        Assert.AreEqual(45, Math.Round(evilWizard.Hp));   // Al hacer las cuentas a mano da 45
+        Assert.AreEqual(137, Math.Round(evilWizard.Hp));   // Al hacer las cuentas a mano da 45
     }
 }

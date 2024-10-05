@@ -16,7 +16,7 @@ public class DwarveTest
     [Test]
     public void TestAttack()
     {
-        dwarve.AddItem(new Knife(40));
+        dwarve.inventory.AddItem(new Knife(40));
         dwarve.Attack(dwarveEnemy);
         
         Assert.AreEqual(175, dwarveEnemy.Hp); // Al hacer las cuentas a mano da 175

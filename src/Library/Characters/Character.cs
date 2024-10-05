@@ -1,17 +1,18 @@
-﻿namespace Program;
+﻿using Library.Items;
+
+namespace Program;
 
 public abstract class Character<TItem>
 {
-    protected TItem[] items;
     protected float hp;
     protected float maxHp;
     protected float damage;
     protected float defense;
-    private int inventoryLength = 2;
+    public Inventory<TItem> inventory { get; }
 
     public Character(float maxHp, float damage, float defense)
     {
-        items = new TItem[inventoryLength];
+        inventory = new Inventory<TItem>(2);
         hp = maxHp;
         this.maxHp = maxHp;
         this.defense = defense;
@@ -21,56 +22,6 @@ public abstract class Character<TItem>
     public float Hp
     {
         get { return hp; }
-    }
-
-    private int SearchItemInItems(TItem item)
-    {
-        return Array.IndexOf(items, item);
-    }
-
-    public void AddItem(TItem item)
-    {
-        if (ItemAlreadyExists(item)) return;
-
-        int indexSlotAvailable = GetIndexSlotAvailable();
-        if (indexSlotAvailable != -1)
-        {
-            AssignItemToSlot(indexSlotAvailable, item);
-        }
-        else
-        {
-            // Reemplazar el peor item
-        }
-    }
-
-    private bool ItemAlreadyExists(TItem item)
-    {
-        return Array.IndexOf(items, item) != -1;
-    }
-
-    private int GetIndexSlotAvailable()
-    {
-        for (int i = 0; i < inventoryLength; i++)
-        {
-            if (IsSlotAvailable(i)) return i;
-        }
-        
-        return -1;
-    }
-
-    private bool IsSlotAvailable(int index)
-    {
-        return items[index] == null;
-    }
-    
-    private void AssignItemToSlot(int index, TItem item)
-    {
-        items[index] = item;
-    }
-    
-    public void RemoveItem(TItem item)
-    {
-        items[SearchItemInItems(item)] = default(TItem);
     }
 
     public float Attack(Character<TItem> character)
@@ -104,15 +55,15 @@ public abstract class Character<TItem>
             float magicBookDamage = 0;
             float attackValue = damage;
             
-            for (int i = 0; i < inventoryLength; i++)
+            for (int i = 0; i < inventory.InventoryLength; i++)
             {
-                IAttack item = items[i] as IAttack;
+                IAttack item = inventory.Items[i] as IAttack;
                 if (item != null)
                 {
                     attackValue += item.Damage;
                 }
                 
-                magicBook = items[i] as MagicBook;
+                magicBook = inventory.Items[i] as MagicBook;
                 if (magicBook != null && magicBook.Damage > magicBookDamage)
                 {
                     magicBookDamage = magicBook.Damage;
@@ -136,15 +87,15 @@ public abstract class Character<TItem>
             float magicBookProtection = 0;
             float defenseValue = defense;
             
-            for (int i = 0; i < inventoryLength; i++)
+            for (int i = 0; i < inventory.InventoryLength; i++)
             {
-                IDefense item = items[i] as IDefense;
+                IDefense item = inventory.Items[i] as IDefense;
                 if (item != null)
                 {
                     defenseValue += item.Protection;
                 }
                 
-                magicBook = items[i] as MagicBook;
+                magicBook = inventory.Items[i] as MagicBook;
                 if (magicBook != null && magicBook.Damage > magicBookProtection)
                 {
                     magicBookProtection = magicBook.Damage;
