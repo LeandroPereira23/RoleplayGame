@@ -14,8 +14,8 @@ public class ElveTest
     }
 
     [Test]
-    public void TestAttack()
-    {
+    public void TestAttackKnife()
+    { 
         elve.inventory.AddItem(new Knife(40));
         elve.Attack(elveEnemy);
         
@@ -23,8 +23,51 @@ public class ElveTest
     }
     
     [Test]
-    public void TestHeal()
+    public void TestAttackSpear()
     {
-        Assert.Pass();
+        elve.inventory.AddItem(new Spear(30));
+        elve.Attack(elveEnemy);
+        
+        Assert.AreEqual(180, elveEnemy.Hp); // Al hacer las cuentas a mano da 180
+    }
+    
+    [Test]
+    public void TestAttackShield()
+    {
+        elveEnemy.inventory.AddItem(new Shield(45,30));
+        elveEnemy.Attack(elve);
+        
+        Assert.AreEqual(55, elve.Hp); // Al hacer las cuentas a mano da 55
+    }
+    
+    [Test]
+    public void TestDefenseArmor()
+    {
+        elveEnemy.inventory.AddItem(new Armor(50));
+      
+        Assert.AreEqual(100, elveEnemy.DefenseValue); // Al hacer las cuentas a mano da 100
+    }
+    
+    [Test]
+    public void TestDefenseHat()
+    {
+        elveEnemy.inventory.AddItem(new Hat(20));
+        
+        Assert.AreEqual(70, elveEnemy.DefenseValue); // Al hacer las cuentas a mano da 70
+    }
+    
+   
+    
+    [Test]
+    public void TestHeal() //sanar
+    {
+        elveEnemy.inventory.AddItem(new Shield(40,30));
+        elveEnemy.Attack(elve);
+        elve.Heal();
+        Assert.AreEqual(100,elve.Hp);
+        elveEnemy.inventory.AddItem(new Shield(4000,30));
+        elveEnemy.Attack(elve);
+        elve.Heal();
+        Assert.AreEqual(0,elve.Hp);
     }
 }
