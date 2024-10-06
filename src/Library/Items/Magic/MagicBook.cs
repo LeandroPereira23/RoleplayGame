@@ -2,7 +2,7 @@
 
 public class MagicBook: IMagicItem, IHasSpell
 {
-    private List<Spell> spells = new();
+    public List<Spell> Spells = new();
     private float knowledge = 1;
     
     private float damage { get; set; }
@@ -19,9 +19,9 @@ public class MagicBook: IMagicItem, IHasSpell
 
     private void AddSpell(Spell spell)
     {
-        if (!spells.Contains(spell))
+        if (!Spells.Contains(spell))
         {
-            spells.Add(spell);
+            Spells.Add(spell);
             knowledge += 0.1f;
             
             AttackSpell atSpell = spell as AttackSpell;
@@ -48,9 +48,9 @@ public class MagicBook: IMagicItem, IHasSpell
     
     public void RemoveSpell(Spell spell)
     {
-        if (spells.Contains(spell))
+        if (Spells.Contains(spell))
         {
-            spells.Remove(spell);
+            Spells.Remove(spell);
             knowledge -= 0.1f;
         }
     }

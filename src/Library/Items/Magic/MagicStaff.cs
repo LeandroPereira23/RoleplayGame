@@ -12,7 +12,7 @@ public class MagicStaff : IMagicItem, IHasSpell
             AttackSpell attackSpell = spell as AttackSpell;
 
             return attackSpell != null 
-                ?  damage * (1 + attackSpell.DamageBoost) 
+                ?  damage * (1 + attackSpell.DamageBoost / 100) 
                 : 1;
         }
         private set { damage = value; }
@@ -27,7 +27,7 @@ public class MagicStaff : IMagicItem, IHasSpell
             DefenseSpell defenseSpell = spell as DefenseSpell;
 
             return defenseSpell != null 
-                ?  protection * (1 + defenseSpell.ProtectionBoost) 
+                ?  protection * (1 + defenseSpell.ProtectionBoost / 100) 
                 : 1;
         }
         private set { protection = value; }
