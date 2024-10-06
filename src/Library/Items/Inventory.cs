@@ -16,21 +16,20 @@ public class Inventory<TItem>
     
     public Inventory(int inventoryLength)
     {
+        if (inventoryLength <= 0)
+        {
+            throw new ArgumentException("Inventory length must be greater than zero.");
+        }
         this.inventoryLength = inventoryLength;
         items = new TItem[inventoryLength];
     }
     
-    private int GetIndexOfItem(TItem item)
-    {
-        return Array.IndexOf(items, item);
-    }
-
-    private bool ItemAlreadyExists(TItem item)
+    public bool ItemAlreadyExists(TItem item)
     {
         return Array.IndexOf(items, item) != -1;
     }
 
-    private int GetIndexSlotAvailable()
+    public int GetFirstIndexSlotAvailable()
     {
         for (int i = 0; i < inventoryLength; i++)
         {
@@ -40,45 +39,47 @@ public class Inventory<TItem>
         return -1;
     }
 
-    private bool IsSlotAvailable(int index)
+    public bool IsSlotAvailable(int index)
     {
         return items[index] == null;
     }
     
-    private void AssignItemToSlot(int index, TItem item)
+    public int GetIndexOfItem(TItem item)
     {
-        items[index] = item;
+        return Array.IndexOf(items, item);
     }
     
     public void AddItem(TItem item)
     {
         if (ItemAlreadyExists(item)) return;
 
-        int indexSlotAvailable = GetIndexSlotAvailable();
+        int indexSlotAvailable = GetFirstIndexSlotAvailable();
         if (indexSlotAvailable != -1)
         {
             AssignItemToSlot(indexSlotAvailable, item);
         }
         else
         {
-            items[0] = item;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = inventoryLength - 1; i > 0; i--)
             {
-                if (i == inventoryLength - 1)
-                {
-                    items[0] = items[i];
-                }
-                else
-                {
-                    items[i + 1] = items[i];
-                }
+                items[i] = items[i - 1];
             }
+            
+            items[0] = item;
         }
     }
     
     public void RemoveItem(TItem item)
     {
-        items[GetIndexOfItem(item)] = default(TItem);
+        int index = GetIndexOfItem(item);
+        if (index == -1) return;
+        
+        items[index] = default;
+    }
+    
+    public void ClearInventory()
+    {
+        items = new TItem[inventoryLength];
     }
 
     public string[] GetItemNames()
@@ -86,8 +87,16 @@ public class Inventory<TItem>
         string[] names = new string[inventoryLength];
         for (int i = 0; i < items.Length; i++)
         {
-            names[i] = items[i].GetType().Name;
+            if (items[i] != null)
+            {
+                names[i] = items[i].GetType().Name;
+            }
         }
         return names;
+    }
+    
+    private void AssignItemToSlot(int index, TItem item)
+    {
+        items[index] = item;
     }
 }
