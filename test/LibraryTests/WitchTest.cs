@@ -13,8 +13,8 @@ public class WitchTest
     [SetUp]
     public void Setup()
     {
-        witch = new Witch(100, 10, 10);
-        evilWitch = new Witch(200, 5, 50);
+        witch = new Witch(100, 10, 10, 1);
+        evilWitch = new Witch(200, 5, 50, 2);
         book = new MagicBook();
         
         fuego2 = new AttackSpell(200, "Fuego2");

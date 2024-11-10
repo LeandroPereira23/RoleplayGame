@@ -6,8 +6,8 @@ namespace Library.Characters.Enemies;
 
 public class Witch : Enemy<IMagicItem>
 {
-    public Witch(float maxHp, float damage, float defense ) 
-        : base(maxHp, damage, defense)
+    public Witch(float maxHp, float damage, float defense, int vp) 
+        : base(maxHp, damage, defense, vp)
     {
     
     }
