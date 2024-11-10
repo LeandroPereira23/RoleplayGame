@@ -8,6 +8,7 @@ public abstract class Character<TItem>
     protected float maxHp;
     protected float damage;
     protected float defense;
+    public int Vp { get; protected set; }
     public Inventory<TItem> inventory { get; }
 
     public Character(float maxHp, float damage, float defense)
@@ -95,7 +96,7 @@ public abstract class Character<TItem>
         return hp <= 0;
     }
     
-    public float Attack(Character<TItem> character)
+    public virtual float Attack(Character<TItem> character)
     {
         float dmg = AttackValue * (1 - character.DefenseValue / 100);
 
