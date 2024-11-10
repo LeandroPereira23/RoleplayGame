@@ -1,3 +1,3 @@
 ﻿namespace Program;
 
-public class IPhysicItem { }
+public interface IPhysicItem { }
