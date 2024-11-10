@@ -96,7 +96,18 @@ public abstract class Character<TItem>
         return hp <= 0;
     }
     
-    public virtual float Attack(Character<TItem> character)
+    public virtual float Attack(Character<IPhysicItem> character)
+    {
+        float dmg = AttackValue * (1 - character.DefenseValue / 100);
+
+        character.hp = character.hp > dmg 
+            ? character.hp - dmg 
+            : 0;
+        
+        return character.hp;
+    }
+    
+    public virtual float Attack(Character<IMagicItem> character)
     {
         float dmg = AttackValue * (1 - character.DefenseValue / 100);
 
