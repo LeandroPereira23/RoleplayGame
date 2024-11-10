@@ -1,11 +1,12 @@
-﻿using Program;
+﻿using Library.Characters.Enemies;
+using Program;
 
 namespace LibraryTests;
 
 public class WitchTest
 {
-    private Witch witch;
-    private Witch evilWitch;
+    private Character<IMagicItem> witch;
+    private Character<IMagicItem> evilWitch;
     private MagicBook book;
     private MagicStaff magicStaff;
     private Spell fuego2;

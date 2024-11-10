@@ -7,6 +7,4 @@ public class Elve : Hero<IPhysicItem>
     {
         
     }
-    
-   
 }
