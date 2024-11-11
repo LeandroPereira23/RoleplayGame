@@ -1,5 +1,6 @@
-﻿using Library.Characters.Enemies;
+using Library.Characters.Enemies;
 using Program.Enemies;
+
 
 namespace Program;
 
@@ -15,12 +16,15 @@ public class Program
         Goblin goblin = new Goblin(200, 5, 5, 3);
         goblin.AddItem(new Knife(180));
 
+        Character<IPhysicItem> elve = new Elve(100, 10, 10);
+        Character<IPhysicItem> elveEnemy = new Elve(200, 5, 5);
+
+
         Enemy enemy = goblin;
         enemy.Attack(elve);
         
         Console.WriteLine(elve.Hp);
        
-
         
     }
 } 

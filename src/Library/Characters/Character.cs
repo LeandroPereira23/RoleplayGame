@@ -97,6 +97,7 @@ public abstract class Character
         return hp <= 0;
     }
     
+
     public virtual float Attack(Character character)
     {
         float dmg = AttackValue * (1 - character.DefenseValue / 100);
