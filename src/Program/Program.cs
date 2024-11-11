@@ -15,7 +15,7 @@ public class Program
         
         Goblin goblin = new Goblin(200, 5, 5, 3);
         goblin.AddItem(new Knife(180));
-        
+
 
         Enemy enemy = goblin;
         enemy.Attack(elve);
