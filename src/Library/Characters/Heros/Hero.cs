@@ -7,20 +7,5 @@ public abstract class Hero : Character
     {
         Vp = 0;
     }
-
-    public override float Attack(Character character)
-    {
-        float characterHp = base.Attack(character);
-        if (characterHp == 0) Vp += character.Vp;
-
-        return characterHp;
-    }
     
-    public override float Attack(Character<IMagicItem> character)
-    {
-        float characterHp = base.Attack(character);
-        if (characterHp == 0) Vp += character.Vp;
-
-        return characterHp;
-    }
 }
