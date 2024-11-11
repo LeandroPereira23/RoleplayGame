@@ -5,8 +5,8 @@ namespace LibraryTests;
 
 public class WitchTest
 {
-    private Character<IMagicItem> witch;
-    private Character<IMagicItem> evilWitch;
+    private Witch witch;
+    private Character evilWitch;
     private MagicBook book;
     private MagicStaff magicStaff;
     private Spell fuego2;
@@ -29,7 +29,7 @@ public class WitchTest
     [Test]
     public void TestAttack()
     {
-        witch.inventory.AddItem(book);
+        witch.AddItem(book);
         witch.Attack(evilWitch);
         
         Assert.AreEqual(166, Math.Round(evilWitch.Hp));   // Al hacer las cuentas a mano da 166
@@ -38,7 +38,7 @@ public class WitchTest
     [Test]
     public void TestAttack2()
     {
-        witch.inventory.AddItem(magicStaff);
+        witch.AddItem(magicStaff);
         witch.Attack(evilWitch);
         
         Assert.AreEqual(50, Math.Round(evilWitch.Hp));   // Al hacer las cuentas a mano da 166
@@ -47,7 +47,7 @@ public class WitchTest
     [Test]
     public void TestHeal()
     {
-        witch.inventory.AddItem(magicStaff);
+        witch.AddItem(magicStaff);
         witch.Attack(evilWitch);
         
         evilWitch.Heal();
@@ -59,7 +59,7 @@ public class WitchTest
     public void TestHealDead()
     {
         MagicStaff DeadlyStaff = new MagicStaff(10000, 100, fuego2);
-        witch.inventory.AddItem(DeadlyStaff);
+        witch.AddItem(DeadlyStaff);
         witch.Attack(evilWitch);
         
         evilWitch.Heal();

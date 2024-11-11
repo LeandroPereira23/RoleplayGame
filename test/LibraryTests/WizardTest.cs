@@ -28,7 +28,7 @@ public class WizardTest
     [Test]
     public void TestAttack()
     {
-        wizzard.inventory.AddItem(book);
+        wizzard.AddItem(book);
         wizzard.Attack(evilWizard);
         
         Assert.AreEqual(166, Math.Round(evilWizard.Hp));   // Al hacer las cuentas a mano da 166
@@ -37,7 +37,7 @@ public class WizardTest
     [Test]
     public void TestAttack2()
     {
-        wizzard.inventory.AddItem(magicStaff);
+        wizzard.AddItem(magicStaff);
         wizzard.Attack(evilWizard);
         
         Assert.AreEqual(50, Math.Round(evilWizard.Hp));   // Al hacer las cuentas a mano da 166
@@ -46,7 +46,7 @@ public class WizardTest
     [Test]
     public void TestHeal()
     {
-        wizzard.inventory.AddItem(magicStaff);
+        wizzard.AddItem(magicStaff);
         wizzard.Attack(evilWizard);
         
         evilWizard.Heal();
@@ -58,7 +58,7 @@ public class WizardTest
     public void TestHealDead()
     {
         MagicStaff DeadlyStaff = new MagicStaff(100, 100, fuego2);
-        wizzard.inventory.AddItem(DeadlyStaff);
+        wizzard.AddItem(DeadlyStaff);
         wizzard.Attack(evilWizard);
         
         evilWizard.Heal();

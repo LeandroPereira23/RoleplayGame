@@ -1,6 +1,6 @@
 namespace Program;
 
-public abstract class Hero<TItem> : Character<TItem>
+public abstract class Hero : Character
 {
     public Hero(float maxHp, float damage, float defense) 
         : base(maxHp, damage, defense)
@@ -8,7 +8,7 @@ public abstract class Hero<TItem> : Character<TItem>
         Vp = 0;
     }
 
-    public override float Attack(Character<TItem> character)
+    public override float Attack(Character character)
     {
         float characterHp = base.Attack(character);
         if (characterHp == 0) Vp += character.Vp;

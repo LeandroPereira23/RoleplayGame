@@ -1,3 +1,3 @@
 ﻿namespace Program;
 
-public interface IMagicItem { }
+public interface IMagicItem : IItem{ }

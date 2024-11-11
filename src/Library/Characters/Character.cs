@@ -2,18 +2,19 @@
 
 namespace Program;
 
-public abstract class Character<TItem>
+public abstract class Character
 {
     protected float hp;
     protected float maxHp;
     protected float damage;
     protected float defense;
     public int Vp { get; protected set; }
-    public Inventory<TItem> inventory { get; }
+    protected Inventory<IItem> inventory;
 
+    
     public Character(float maxHp, float damage, float defense)
     {
-        inventory = new Inventory<TItem>(2);
+        inventory = new Inventory<IItem>(2);
         hp = maxHp;
         this.maxHp = maxHp;
         this.defense = defense;
@@ -91,12 +92,12 @@ public abstract class Character<TItem>
         }
     }
     
-    private bool IsDead()
+    public bool IsDead()
     {
         return hp <= 0;
     }
     
-    public virtual float Attack(Character<TItem> character)
+    public virtual float Attack(Character character)
     {
         float dmg = AttackValue * (1 - character.DefenseValue / 100);
 

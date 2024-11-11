@@ -1,27 +1,26 @@
-﻿namespace Program;
+﻿using Library.Characters.Enemies;
+using Program.Enemies;
+
+namespace Program;
 
 public class Program
 {
     public static void Main()
     {
-        Elve elve = new Elve(100, 10, 10);
-        Elve elveEnemy = new Elve(200, 5, 5);
+        var elve = new Dwarve(100, 10, 10);
 
-        Knife cuchillo = new Knife(18);
-        Spear spear = new Spear(18);
-        elve.inventory.AddItem(cuchillo);
-        elve.inventory.AddItem(spear);
-
-        Console.WriteLine(string.Join(" ", elve.inventory.GetItemNames()));
+        var cuchillo = new Knife(18);
+        elve.AddItem(cuchillo);
         
-        Console.WriteLine(elveEnemy.Hp);
-        elve.Attack(elveEnemy);
-        Console.WriteLine(elveEnemy.Hp);
-        elve.Attack(elveEnemy);
-        Console.WriteLine(elveEnemy.Hp);
-        elve.Attack(elveEnemy);
-        Console.WriteLine(elveEnemy.Hp);
-        elveEnemy.Heal();
-        Console.WriteLine(elveEnemy.Hp);
+        Goblin goblin = new Goblin(200, 5, 5, 3);
+        goblin.AddItem(new Knife(180));
+
+        Enemy enemy = goblin;
+        enemy.Attack(elve);
+        
+        Console.WriteLine(elve.Hp);
+       
+
+        
     }
 } 
