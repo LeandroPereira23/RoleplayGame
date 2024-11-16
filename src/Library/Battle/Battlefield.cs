@@ -66,5 +66,4 @@ public class Battlefield
         Enemies.AddRange(enemies);
         initialHeroVPs = new int[Heroes.Count];
     }
-    
 }
