@@ -6,21 +6,21 @@ namespace LibraryTests;
 public class KnightTest
 {
     private Knight knight;
-    private DarKnight darKnight;
+    private DarkKnight darkKnight;
     [SetUp]
     public void Setup()
     {
         knight = new Knight(100, 20, 30);
-        darKnight = new DarKnight(150, 15, 30, 2);
+        darkKnight = new DarkKnight(150, 15, 30, 2);
     }
 
     [Test]
     public void Test()
     {
         knight.AddItem(new Knife(50));
-        knight.Attack(darKnight);
+        knight.Attack(darkKnight);
         
-        Assert.AreEqual(101, darKnight.Hp); // Al hacer las cuentas a mano da 100.7 al redondear 101
+        Assert.AreEqual(101, darkKnight.Hp); // Al hacer las cuentas a mano da 100.7 al redondear 101
     }
 
 }

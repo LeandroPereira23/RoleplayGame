@@ -3,9 +3,9 @@ using Program.Enemies;
 
 namespace Library.Characters.Enemies;
 
-public class DarKnight : Enemy
+public class DarkKnight : Enemy
 {
-    public DarKnight(float maxHp, float damage, float defense, int vp)
+    public DarkKnight(float maxHp, float damage, float defense, int vp)
         : base(maxHp, damage, defense, vp)
     {
 
