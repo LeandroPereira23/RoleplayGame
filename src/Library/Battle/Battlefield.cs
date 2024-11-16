@@ -54,6 +54,10 @@ public class Battlefield
                         aux++;
                     }
                 }
+                else
+                {
+                    break;
+                }
             }
             attacant.Attack(recievers[aux]);
             aux++;
