@@ -7,7 +7,7 @@ public class KnightTest
 {
     private Knight knight;
     private DarkKnight darkKnight;
-    
+  
     [SetUp]
     public void Setup()
     {
