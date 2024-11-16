@@ -102,15 +102,13 @@ public abstract class Character
     }
     
 
-    public virtual float Attack(Character character)
+    public void Attack(Character character)
     {
         float dmg = AttackValue * (1 - character.DefenseValue / 100);
 
         character.hp = character.hp > dmg 
             ? character.hp - dmg 
             : 0;
-        
-        return character.hp;
     }
     
     public void Heal()
