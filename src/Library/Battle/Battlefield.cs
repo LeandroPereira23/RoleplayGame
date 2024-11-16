@@ -19,5 +19,4 @@ public class Battlefield
         Heroes = heroes;
         Enemies = enemies;
     }
-    
 }

@@ -56,8 +56,6 @@ public class ElveTest
         Assert.AreEqual(70, elveEnemy.DefenseValue); // Al hacer las cuentas a mano da 70
     }
     
-   
-    
     [Test]
     public void TestHeal() //sanar
     {

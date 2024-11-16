@@ -7,6 +7,7 @@ public class KnightTest
 {
     private Knight knight;
     private DarkKnight darkKnight;
+  
     [SetUp]
     public void Setup()
     {
@@ -15,12 +16,11 @@ public class KnightTest
     }
 
     [Test]
-    public void Test()
+    public void AttackTest()
     {
         knight.AddItem(new Knife(50));
         knight.Attack(darkKnight);
         
         Assert.AreEqual(101, darkKnight.Hp); // Al hacer las cuentas a mano da 100.7 al redondear 101
     }
-
 }

@@ -15,5 +15,4 @@ public class DarkKnight : Enemy
     {
         inventory.AddItem(item);
     }
-
 }
