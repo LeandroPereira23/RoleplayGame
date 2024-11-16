@@ -10,7 +10,6 @@ public abstract class Character
     protected float defense;
     public int Vp { get; protected set; }
     protected Inventory<IItem> inventory;
-
     
     public Character(float maxHp, float damage, float defense)
     {
@@ -24,6 +23,11 @@ public abstract class Character
     public float Hp
     {
         get { return hp; }
+    }
+    
+    public float MaxHp
+    {
+        get { return maxHp; }
     }
     
     public float AttackValue
