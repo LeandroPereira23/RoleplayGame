@@ -1,0 +1,228 @@
+classDiagram
+    class Battlefield {
+      + List~Enemy~ Enemies
+      + List~Hero~ Heroes
+      - int[] initialHeroVPs
+
+      + DoEncounter() void
+      - TryToHealHeros() void
+      - SetInitialHeroVPs() void
+      - TeamAttack(List~Character~ attacants, List~Character~ recievers) void
+      + AddFightersToBattle(List~Hero~ heroes, List~Enemy~ enemies) void
+    }
+    Battlefield --> Hero
+    Battlefield --> Enemy
+    Battlefield o-- Character
+
+    class Assassin {
+      + AddItem(IPhysicItem item) void
+    }
+    Assassin --|> Enemy
+
+    class DarkKnight {
+      + AddItem(IPhysicItem item) void
+    }
+    DarkKnight --|> Enemy
+
+    class Goblin {
+      + AddItem(IPhysicItem item) void
+    }
+    Goblin --|> Enemy
+
+    class Witch {
+      + AddItem(IMagicItem item) void
+    }
+    Witch --|> Enemy
+
+    class Enemy {
+        <<abstract>>
+    }
+    Enemy --|> Character
+
+    class Dwarve {
+      + AddItem(IPhysicItem item) void
+    }
+    Dwarve --|> Hero
+
+    class Elve {
+      + AddItem(IPhysicItem item) void
+    }
+    Elve --|> Hero
+
+    class Knight {
+      + AddItem(IPhysicItem item) void
+    }
+    Knight --|> Hero
+
+    class Wizard {
+      + AddItem(IMagicItem item) void
+    }
+    Wizard --|> Hero
+
+    class Hero {
+        <<abstract>>
+    }
+    Hero --|> Character
+
+    class Character {
+        # float hp 
+        # float maxHp
+        # float damage
+        # float defense
+        # inventory: Inventory~TItem~ 
+        + int Vp
+        + float Hp
+        + float MaxHp
+        + float AttackValue
+        + float DefenseValue
+
+        + IsDead() bool
+        + Attack(Character character) void
+        + Heal() void
+    }
+    Character o-- Inventory
+    Character --> IItem
+    Character --> IHasSpell
+    Character --> IAttack
+    Character --> IDefense
+
+    class IAttack  {
+        <<interface>>
+        float Damage
+    }
+
+    class IDefense  {
+        <<interface>>
+        float Protection
+    }
+
+    class IHasSpell  {
+        <<interface>>
+        float Damage
+        float Protection
+    }
+
+    class IItem  {
+        <<interface>>
+    }
+
+    class IMagicItem  {
+        <<interface>>
+    }
+    IMagicItem ..|> IItem
+
+    class IPhysicItem {
+        <<interface>>
+    }
+    IPhysicItem ..|> IItem
+
+    class AttackSpell {
+        - float damageBoost
+        + float DamageBoost
+    }
+    AttackSpell --|> Spell
+
+    class DefenseSpell {
+        - float protectionBoost
+        + float ProtectionBoost
+    }
+    DefenseSpell --|> Spell
+
+    class Spell {
+        <<abstract>>
+        # string name
+    }
+
+    class Inventory {
+        - TItem[] items
+        + TItem[] Items
+        - int inventoryLength
+        + int InventoryLength
+
+        + bool ItemAlreadyExists(TItem item)
+        + int GetFirstIndexSlotAvailable()
+        + bool IsSlotAvailable(int index)
+        + int GetIndexOfItem(TItem item)
+        + void AddItem(TItem item)
+        + void RemoveItem(TItem item)
+        + void ClearInventory()
+        + string[] GetItemNames()
+        - void AssignItemToSlot(int index, TItem item)
+    }
+
+    class Spear {
+        + float Damage
+    }
+    Spear ..|> IPhysicItem
+    Spear ..|> IAttack
+
+    class Knife {
+        + float Damage
+    }
+    Knife ..|> IPhysicItem
+    Knife ..|> IAttack
+
+    class Shield {
+        + float Damage
+        + float Protection
+    }
+    Shield ..|> IPhysicItem
+    Shield ..|> IAttack
+    Shield ..|> IDefense
+
+    class Hat {
+        + float Protection
+    }
+    Hat ..|> IPhysicItem
+    Hat ..|> IDefense
+
+    class Armor {
+        + float Protection
+    }
+    Armor ..|> IPhysicItem
+    Armor ..|> IDefense
+
+    class MagicStaff {
+        - Spell spell
+        - float damage
+        + float Damage
+        - float protection
+        + float Protection
+    }
+    MagicStaff ..|> IMagicItem
+    MagicStaff ..|> IHasSpell
+    MagicStaff *-- spell
+    MagicStaff --> DefenseSpell
+    MagicStaff --> AttackSpell
+
+    class MagicBook {
+        + List~Spell~ Spells
+        - float knowledge
+        - float damage
+        + float Damage
+        - float protection
+        + float Protection
+
+        - void AddSpell(Spell spell)
+        + void AddSpell(params Spell[] spells)
+        + void RemoveSpell(Spell spell)
+    }
+    MagicBook ..|> IMagicItem
+    MagicBook ..|> IHasSpell
+    MagicBook o-- Spell
+    MagicBook --> DefenseSpell
+    MagicBook --> AttackSpell
+
+    class Broom {
+        + float Damage
+        + float Protection
+    }
+    Broom ..|> IMagicItem
+    Broom ..|> IDefense
+    Broom ..|> IAttack
+
+    class Cape {
+        + float Protection
+    }
+    Cape ..|> IMagicItem
+    Cape ..|> IDefense
